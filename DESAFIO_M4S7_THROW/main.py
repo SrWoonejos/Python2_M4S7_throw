@@ -13,14 +13,15 @@ def verificar_salario(salario):
         raise RangoSalarioError(salario)
     else:
         print("Salario aceptado")
-        
+        return True
 
 #programa principal usuario
-try:
-    salario = int(input("Ingresa tu salario: "))
-    verificar_salario(salario)
-except RangoSalarioError as e:
-    print(e)
-except ValueError:
-    print("Error: Ingresa nros enteros")
-        
+while True:
+    try:
+        salario = int(input("Ingresa tu salario: "))
+        if verificar_salario(salario):
+            break #se rompe buble cuando el salario esta dentro del rango
+    except RangoSalarioError as e:
+        print(e)
+    except ValueError:
+        print("Error: Ingresa nros enteros")  
